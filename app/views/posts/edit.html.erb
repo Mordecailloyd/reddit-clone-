@@ -1,0 +1,16 @@
+<h1>Edit post!</h1>
+<br><br>
+
+<form class="" action="<%=edit_post_url%>" method="post">
+  <%= auth_token %>
+  <label>Edit Title</label>
+  <input type="text" name="post[title]" value=" <%=@post.title%>">
+  <label>Edit Content</label>
+  <input type="text" name="post[content]" value="<%=@post.content%>">
+  <label>Edit Url</label>
+  <input type="text" name="post[url]" value="<%=@post.url%>">
+  <input type="hidden" name="post[sub_id]" value="<%=@post.sub_id%>">
+
+
+  <input type="submit" name="" value="create post">
+</form>

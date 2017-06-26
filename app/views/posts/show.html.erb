@@ -1,0 +1,12 @@
+<h1> <%=@post.title%>  </h1>
+
+<br>
+Author: <%= @post.author.username %>
+<br>
+Description
+<p> <%=  @post.content%></p>
+<br>
+<%= link_to 'Edit Post', edit_post_url %>
+<br>
+
+<%= link_to 'Sub', sub_url(@post.sub)%>

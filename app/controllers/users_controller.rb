@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
-  before_action :require_logged_out
-  
+  # before_action :require_logged_out
+
   def new
     render :new
   end
@@ -10,7 +10,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       login!(@user)
-      redirect_to posts_url
+      redirect_to subs_url
     else
       flash[:errors] = @user.errors.full_messages
       redirect_to new_user_url

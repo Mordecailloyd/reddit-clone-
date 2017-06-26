@@ -1,5 +1,6 @@
 class SubsController < ApplicationController
-  before_action require_moderator, only: [:edit, :update]
+  before_action :require_moderator, only: [:edit, :update]
+  before_action :require_logged_in, except: [:index, :show]
 
   def new
     render :new
@@ -17,25 +18,36 @@ class SubsController < ApplicationController
   end
 
   def update
-
+    @thread = Sub.find(params[:id])
+    if @thread.update_attributes(sub_params)
+      redirect_to sub_url(@thread)
+    else
+      flash[:errors] = @thread.errors.full_messages
+      render :update
+    end
   end
 
   def show
-    @thread = Sub.find_by(id:params[:id])
+    @thread = Sub.find(params[:id])
     if @thread
-      render
+      # redirect_to sub_url(@thread)
+      render :show
     else
-      render
+      flash[:errors]=@thread.errors.full_messages
+      redirect_to new_sub_url
     end
   end
 
   def index
-
+    @threads = Sub.all
+    render :index
   end
 
   def edit
-
+    @thread = Sub.find_by(id: params[:id])
+    render :edit
   end
+
 
   private
 
