@@ -6,7 +6,7 @@ Author: <%= @post.author.username %>
 Description
 <p> <%=  @post.content%></p>
 <br>
-<%= link_to 'Edit Post', edit_post_url %>
+<%= link_to 'Edit Post', edit_post_url(@post) %>
 <br>
 
 <%= link_to 'Sub', sub_url(@post.sub)%>

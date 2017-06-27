@@ -1,6 +1,7 @@
 <h1>Editing Sub</h1><br><br>
 
-<form class="" action="<%=edit_sub_url%>" method="post">
+<form class="" action="<%=sub_url(@thread)%>" method="post">
+  <input type="hidden" name="_method" value="patch">
   <%= auth_token %>
   <label>Title</label>
   <input type="text" name="sub[title]" value="<%=@thread.title%>">

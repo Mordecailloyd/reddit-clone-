@@ -1,10 +1,12 @@
 <h1> <%=@thread.title%> sub </h1>
 
 <br>
+Author <%= @thread.moderator.username %>
 <br>
-Description
-<p> <%=  @thread.description%></p>
+<h3>Description</h3>
+<p> <%=@thread.description%></p>
 <br><br>
+<h2>Posts</h2>
 <% @thread.posts.each do |post| %>
 <%= link_to post.title, post %>
 <%= post.content %>
@@ -30,5 +32,7 @@ Description
   <input type="hidden" name="post[sub_id]" value="<%=@thread.id%>">
   <input type="submit" name="" value="create post">
 </form>
+<br><br>
+<%= link_to 'Home Page', subs_url %>
 <br><br>
 <%= link_to 'Edit Sub', edit_sub_url(@thread) if @thread.moderator_id == current_user.id %>

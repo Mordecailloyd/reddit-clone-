@@ -6,6 +6,20 @@
 
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
+
+    <% if logged_in? %>
+    <%= button_to 'logout', session_url, method: :delete %>
+    <br>
+    Welcome <%= current_user.username %>
+    <br>
+    
+    <% else %>
+    <%= link_to 'sign up', new_user_url %>
+    <br>
+    <%=link_to 'sign in', new_session_url %>
+    <% end %>
+
+
   </head>
 
   <body>
